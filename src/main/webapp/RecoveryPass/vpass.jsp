@@ -52,40 +52,14 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="btn-group btn-group-lg">
-
-            <div class="btn-group">
-                <form action="welcomeServlet" method="post">
-                    <button type="submit" class="btn btn-success">Home</button>
-
-                </form>
-            </div>
-
-            <div class="btn-group">
-                <form action="faqservlet" method="post">
-                    <button type="input" class="btn btn-success">Faq</button>
-
-                </form>
-            </div>
-            <div class="btn-group">
-                <form action="profileServlet" method="post">
-                    <button type="submit" class="btn btn-success">Profile</button>
-
-                </form>
-            </div>
-            <div class="btn-group">
-                <form action="loginServlet" method="post">
-                    <button type="input" class="btn btn-success">LogIn</button>
-                </form>
-            </div>
-        </div>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-
 <p style="color: #31B404">${sessionScope['ok2']}</p>
+
+<t:if test="${sessionScope['sessionVCode2']!=null}">
+<form action="index.jsp" method="post">
+    <button type="input" class="btn-group-lg btn-success">GO HOME</button>
+    <%session.invalidate();%>
+</form>
+</t:if>
 <br>
 <br>
 <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("jquery.min.js") %>'></script>
