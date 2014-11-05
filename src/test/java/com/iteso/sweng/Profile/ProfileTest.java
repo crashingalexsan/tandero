@@ -17,7 +17,6 @@ public class ProfileTest {
         assertEquals(null, prueba.getLastname());
         assertEquals(null, prueba.getEmail());
         assertEquals(null, prueba.getPassword());
-        assertEquals(null, prueba.getAddress());
         assertEquals(null, prueba.getPhome());
         assertEquals(null, prueba.getPoffice());
         assertEquals(null, prueba.getPmobile());

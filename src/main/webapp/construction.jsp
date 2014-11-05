@@ -11,15 +11,11 @@
     <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap.min.css") %>'>
     <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap-theme.min.css") %>'>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>ERROR || Tandero</title>
+    <title>Page in construction || Tandero</title>
 </head>
 <body>
 
-<h1>Denied Access</h1>
-
-<form action="index.jsp" method="post" target="_top">
-    <button type="input" class="btn-group-lg btn-success">Go Home</button>
-</form>
+<h1>Sorry, we're working on this page.</h1>
 
 <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("jquery.min.js") %>'></script>
 <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("js/bootstrap.min.js") %>'></script>

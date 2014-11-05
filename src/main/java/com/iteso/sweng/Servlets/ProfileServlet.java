@@ -26,15 +26,16 @@ public class ProfileServlet extends HttpServlet{
 
         if(session!=null)
         if(LoginDao.validate(n, p)){
-            RequestDispatcher rd=request.getRequestDispatcher("profile.jsp");
+            RequestDispatcher rd=request.getRequestDispatcher("index2.jsp");
             request.setAttribute("email", n);
             request.setAttribute("password", p);
             session.setAttribute("email", n);
             session.setAttribute("password", p);
+
+
             rd.forward(request,response);
         }
         else{
-            //out.print("<p style=\"color:red\">Sorry username or password error</p>");
             RequestDispatcher rd=request.getRequestDispatcher("error.jsp");
             rd.include(request,response);
         }

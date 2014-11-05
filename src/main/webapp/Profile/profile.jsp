@@ -4,7 +4,7 @@
     Author     : Daniel
 --%>
 <%
-    if(request.getAttribute("email")==null)
+    if(session.getAttribute("email")==null)
         response.sendRedirect("error.jsp");
 
 %>
@@ -24,40 +24,6 @@
 <body>
 
 
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="btn-group btn-group-lg">
-
-            <div class="btn-group">
-                <form action="welcomeServlet" method="post">
-                    <button type="submit" class="btn btn-success">Home</button>
-
-                </form>
-            </div>
-
-            <div class="btn-group">
-                <form action="faqservlet" method="post">
-                    <button type="input" class="btn btn-success">Faq</button>
-
-                </form>
-            </div>
-            <div class="btn-group">
-                <form action="profileServlet" method="post">
-                    <button type="submit" class="btn btn-success">Profile</button>
-
-                </form>
-            </div>
-            <div class="btn-group">
-                <form action="loginServlet" method="post">
-                    <button type="input" class="btn btn-success">LogIn</button>
-                </form>
-            </div>
-        </div>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-
-
 <%String email = (String)session.getAttribute("email");%>
 <%
     BDProfile a = new BDProfile();
@@ -71,10 +37,15 @@
 <p><strong>Name: </strong><%=b.getName()%></p>
 <p><strong>Last Name: </strong><%=b.getLastname()%></p>
 <p><strong>E-mail: </strong><%=b.getEmail()%></p>
-<p><strong>Address: </strong><span><% if(b.getAddress()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getAddress()%></span></p>
 <p><strong>Phone Home: </strong><span><% if(b.getPhome()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getPhome()%></span></p>
-<p></p><strong>Phone Office: </strong><span><% if(b.getPoffice()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getPoffice()%></span></p>
+<strong>Phone Office: </strong><span><% if(b.getPoffice()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getPoffice()%></span></p>
 <p><strong>Phone Mobile: </strong><span><% if(b.getPmobile()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getPmobile()%></span></p>
+<p><strong>Street 1: </strong><span><% if(b.getStreet1()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getStreet1()%></span></p>
+<p><strong>Street 2: </strong><span><% if(b.getStreet2()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getStreet2()%></span></p>
+<p><strong>City: </strong><span><% if(b.getCity()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getCity()%></span></p>
+<p><strong>ZIP: </strong><span><% if(b.getZip()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getZip()%></span></p>
+<p><strong>State: </strong><span><% if(b.getState()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getState()%></span></p>
+<p><strong>Country: </strong><span><% if(b.getCountry()==null) out.println("<span style=\"color: #ff0000\">"); %><%=b.getCountry()%></span></p>
 <p><strong>Status Account: </strong><%
     if(b.isStatus())
     {
@@ -83,13 +54,13 @@
     }
     else {
         out.println("<span style=\"color: #ff0000\">");
-        out.println("No verified");
+        out.println("No verified<br><br>" +
+                    "<form name=\"form1\" method=\"post\" action=\"RServlet\">\n" +
+                    "<button name=\"value\" type=\"input\" class=\"btn btn-success\" value=\"SignIn/activate.jsp\">Activate Account</button> "+
+                    "</form>");
+
     }
 %></p></span>
-
-<form action="faqmemberservlet" method="post">
-    <input type="submit" class="btn btn-warning" value="Member´s FAQ" />
-</form>
 
 <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("jquery.min.js") %>'></script>
 <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("js/bootstrap.min.js") %>'></script>
