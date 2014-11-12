@@ -127,14 +127,16 @@ public class BDProfile {
         return null;
     }
 
-    public void changePass(String email, String pass) throws SQLException{
+    public void changePass(String email, String pass, int i) throws SQLException{
         String sql2 = "UPDATE user" + " SET password ='"+pass+"'" + "WHERE email = '" +email+"'" ;
         PreparedStatement ps2 = conexion.prepareStatement(sql2);
         ps2.executeUpdate();
 
-        String sql = "DELETE FROM recoveryPass WHERE email = '" +email+"'" ;
-        PreparedStatement ps = conexion.prepareStatement(sql);
-        ps.executeUpdate();
+        if(i==1) {
+            String sql = "DELETE FROM recoveryPass WHERE email = '" + email + "'";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.executeUpdate();
+        }
     }
 
     public void generateCode(String email) throws SQLException{

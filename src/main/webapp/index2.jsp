@@ -47,19 +47,21 @@
             <div class="btn-group">
                 <form action="construction.jsp" method="post" target="main">
                     <button type="submit" class="btn btn-success">Tanda</button>
-
+                </form>
+            </div>
+            <div class="btn-group">
+                <form action="RServlet" method="post" target="main">
+                    <button name="value" type="input" class="btn btn-success" value="Account/account.jsp">Account</button>
                 </form>
             </div>
             <div class="btn-group">
                 <form action="faqmemberservlet" method="post" target="main">
                     <button type="input" class="btn btn-success">Members Faq</button>
-
                 </form>
             </div>
             <div class="btn-group">
-                <form action="construction.jsp" method="post" target="main">
+                <form action="LogoutServlet" method="post" target="main">
                     <button type="submit" class="btn btn-success">Log Out</button>
-
                 </form>
             </div>
         </div>

@@ -1,6 +1,8 @@
-package com.iteso.sweng.RecoveryPass;
+package com.iteso.sweng.ChangePass;
 
 import com.iteso.sweng.Profile.BDProfile;
+import com.iteso.sweng.Profile.Profile;
+import com.iteso.sweng.dao.LoginDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,49 +13,50 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 /**
  * Created by Daniel on 13/10/14.
  */
-public class VPassServlet extends HttpServlet {
+public class ConfirmServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
+
             HttpSession respuesta = request.getSession(true);
-            String npass = request.getParameter("npass");
-            String cpass = request.getParameter("cpass");
-            String email = respuesta.getAttribute("sessionVCode").toString();
+            String email = respuesta.getAttribute("email").toString();
+            String password = request.getParameter("password");
             BDProfile a = new BDProfile();
 
             respuesta.setAttribute("error", "");
 
-            //Si E-mail vacio
-            if (npass.isEmpty() || cpass.isEmpty()) {
-                respuesta.setAttribute("error", "You need to put the new password.");
+            //Si la cuenta existe
+            try {
+                a.conectar();
+                if (a.ifExistAccount(email)) {
 
-            } else {
-                //No hay campos vacios, se comparan las cadenas
-                if (!npass.equals(cpass)) {
-                    respuesta.setAttribute("error", "The passwords don't match.");
+                    if(LoginDao.validate(email, password)){
+                        response.setContentType("text/html");
+                        RequestDispatcher rd=request.getRequestDispatcher("Account/ChangePass/change.jsp");
+                        rd.forward(request, response);
+                    }
+                    else
+                        respuesta.setAttribute("error", "The password is invalid.");
 
                 } else {
-                    //Las constraseñas si coinciden
-                    try {
-                        a.conectar();
-
-                        a.changePass(email, npass, 1);
-                        respuesta.setAttribute("ok2", "DONE: The password has been changed.");
-                        respuesta.setAttribute("sessionVCode2", "V");
-                        a.desconectar();
-
-                    } catch (Exception e) {}
+                    respuesta.setAttribute("error", "Invalid session.");
                 }
-            }
+
+                a.desconectar();
+
+            } catch (Exception e) {}
+
+
 
             response.setContentType("text/html");
-            RequestDispatcher rd=request.getRequestDispatcher("RecoveryPass/vpass.jsp");
+            RequestDispatcher rd=request.getRequestDispatcher("Account/ChangePass/index.jsp");
             rd.forward(request, response);
 
         }

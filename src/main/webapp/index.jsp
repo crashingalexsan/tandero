@@ -9,12 +9,21 @@
          pageEncoding="ISO-8859-1"%>
 <html>
 <head>
+    <script type="text/javascript">
+        function breakout()
+        {
+            if (window.top != window.self)
+            {
+                window.top.location="index.jsp"
+            }
+        }
+    </script>
     <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap.min.css") %>'>
     <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap-theme.min.css") %>'>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Tandero.com || TANDERO</title>
 </head>
-<body>
+<body onLoad="javascript:breakout()">
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="btn-group btn-group-lg">

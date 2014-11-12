@@ -142,6 +142,33 @@
         <url-pattern>/ResendCodeServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <servlet-class>com.iteso.sweng.ChangePass.ConfirmServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <url-pattern>/ConfirmServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangePass</servlet-name>
+        <servlet-class>com.iteso.sweng.ChangePass.ChangePass</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePass</servlet-name>
+        <url-pattern>/ChangePass</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.iteso.sweng.LogOut.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
 
     <session-config>
         <session-timeout>
