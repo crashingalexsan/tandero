@@ -11,7 +11,7 @@
         response.sendRedirect("error.jsp");
 
 %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="com.iteso.sweng.Profile.*"%>
 <html>
 <head>
@@ -119,6 +119,10 @@
             <td><label for="country2">Country:</label></td>
             <td>
                 <input type="text" name="country2" id="country2" value="<%=b.getCountry()%>"></td>
+            <td><label for="image">Image:</label></td>
+            <td>
+                <input type="text" name="image" id="image" value="<%=b.getImage()%>"></td>
+
             <td>&nbsp;</td>
         </tr>
         </tbody>
@@ -218,6 +222,10 @@
             <td><label for="country">Country:</label></td>
             <td>
                 <input type="text" name="country" id="country" value="<%=session.getAttribute("country")%>" readonly></td>
+
+            <td><label for="image">Image:</label></td>
+            <td>
+                <input type="text" name="image" id="image" value="<%=session.getAttribute("image")%>" readonly></td>
             <td>&nbsp;</td>
         </tr>
         </tbody>
@@ -234,7 +242,8 @@
         session.setAttribute("stree2",null);
         session.setAttribute("city",null);
         session.setAttribute("state",null);
-        session.setAttribute("country",null);%>
+        session.setAttribute("country",null);
+        session.setAttribute("image",null);%>
     <input type="submit" name="submit" id="submit" value="Save changes">
 </form>
 <form name="form1" method="post" action="CancelEditProfileServlet">

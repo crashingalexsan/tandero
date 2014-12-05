@@ -46,7 +46,7 @@ public class EditProfileServlet extends HttpServlet {
                         b.setPoffice(request.getParameter("poffice"));
                         b.setStreet1(request.getParameter("street1"));
                         b.setStreet2(request.getParameter("street2"));
-
+                        b.setImage(request.getParameter("image"));
                         a.updateContact(b, email);
                         respuesta.setAttribute("ok", null);
                         respuesta.setAttribute("ok2", "You information has been update.");
@@ -63,6 +63,7 @@ public class EditProfileServlet extends HttpServlet {
                         respuesta.setAttribute("poffice",request.getParameter("poffice2"));
                         respuesta.setAttribute("street1",request.getParameter("street12"));
                         respuesta.setAttribute("street2",request.getParameter("street22"));
+                        respuesta.setAttribute("image",request.getParameter("image"));
 
                         respuesta.setAttribute("ok", "Do you want to apply the changes?");
                     }

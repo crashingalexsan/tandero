@@ -29,6 +29,8 @@ public class BDProfile {
 
         if(rs.next()){
             Profile contacto = new Profile();
+
+			contacto.setID(rs.getInt("iduser"));
             contacto.setNick(rs.getString("nick"));
             contacto.setName(rs.getString("name"));
             contacto.setLastname(rs.getString("lastname"));

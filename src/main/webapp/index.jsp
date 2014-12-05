@@ -21,7 +21,7 @@
     <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap.min.css") %>'>
     <link rel='stylesheet' href='<%= org.webjars.AssetLocator.getWebJarPath("css/bootstrap-theme.min.css") %>'>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Tandero.com || TANDERO</title>
+    <title> WELCOME || TANDERO</title>
 </head>
 <body>
 <body onLoad="javascript:breakout()">

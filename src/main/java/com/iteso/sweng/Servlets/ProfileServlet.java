@@ -22,6 +22,7 @@ public class ProfileServlet extends HttpServlet{
         PrintWriter out = response.getWriter();
         String n=request.getParameter("email");
         String p=request.getParameter("password");
+        String i=request.getParameter("image");
         HttpSession session = request.getSession(false);
 
         if(session!=null)
@@ -30,11 +31,12 @@ public class ProfileServlet extends HttpServlet{
             /*If user exists then return profile page with the attributes */
             RequestDispatcher rd= request.getRequestDispatcher("profile.jsp");
              rd=request.getRequestDispatcher("index2.jsp");
-             rd=request.getRequestDispatcher("index2.jsp");
             request.setAttribute("email", n);
             request.setAttribute("password", p);
+            request.setAttribute("image",i);
             session.setAttribute("email", n);  /* set attributes for next page*/
             session.setAttribute("password", p);
+            session.setAttribute("image",i);
 
 
             rd.forward(request,response);

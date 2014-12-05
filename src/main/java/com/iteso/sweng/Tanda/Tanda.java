@@ -17,7 +17,10 @@ public class Tanda {
     private ArrayList<User> tandaUsers = new ArrayList<User>();
     private ArrayList<User> tandaUsersSelected = new ArrayList<User>();
     Calendar cal = Calendar.getInstance();
+    private int state =0;
 
+    public int getState(){return state;}
+    public void setState(int state) {this.state = state;}
     public void setOrganizer(Organizer organizer){
         this.org = organizer;
     }
@@ -42,16 +45,48 @@ public class Tanda {
     public void setMonto(int monto) {
         this.monto = monto;
     }
+
     public void randomizeUsers( Organizer org ){ //The only list that will be randomized will be the tandaUsers list. Whenever the organizer is done randomizing users, he can then use the method
 //SelectUser to select the first element from tandaUsers and add it to tandaUsersSelected
         if(this.tandaUsers.isEmpty()){
-            System.out.println("No users to randomize, please add users to the tanda");
+            System.out.println("No users to randomize, please add users to the tanda.");
         }else {
             Collections.shuffle(tandaUsers);
             Collections.shuffle(tandaUsers);
             System.out.println("Users Randomized");
         }
     }
+
+    public void StartNow(Organizer o){
+        if(this.startNow == true){
+            System.out.println("This Tanda has already started!");
+        }else{
+            this.startNow = true;
+        }
+    }
+
+    public void ChangeName (Organizer o, String newName){
+        if(this.concluded == true){
+            return;
+        }else{
+            this.name = newName;
+        }
+    }
+
+    public void clearAllUsers (Organizer o){
+        if(this.concluded == true) {
+            return;
+        }else if(this.startNow == true){
+            System.out.println("This Tanda has already started! You cannot delete any users!");
+        }else{
+            this.tandaUsersSelected.clear();
+            this.tandaUsers.clear();
+        }
+
+    }
+
+
+
     public void AddUser (User u, Organizer org){ //Add a user to tandaUsers list.
         tandaUsers.add(u);
         return;
@@ -64,11 +99,30 @@ public class Tanda {
         }
         this.tandaUsersSelected.add(this.tandaUsers.remove(0));
     }
-    public void SelectUser(Organizer org, int i){ //Same as the above but with an index to select any other user.
+    public void SelectUser(int i){ //Same as the above but with an index to select any other user.
         if(this.tandaUsers.isEmpty()){
             System.out.println("User list is empty");
         }
         this.tandaUsersSelected.add(this.tandaUsers.remove(i));
+    }
+
+    public void ChangeOrganizer(User user){
+
+        if(this.tandaUsers.isEmpty()){
+            System.out.println("User list is empty");
+        }
+
+        else if (this.tandaUsers.contains(user)){
+           Organizer org = Organizer.becomeAnOrganizer(user);
+            this.org=org;
+
+        }
+        else
+        {
+            System.out.println("User was not found in this Tanda");
+
+        }
+        return;
     }
     public  Tanda (String name, int monto, Organizer org){ //Creates a new tanda with an amount and a name, needs an organizer
 
@@ -79,7 +133,6 @@ public class Tanda {
 
     public Tanda createNewTanda(String name, int monto, Organizer organizer){
         return new Tanda(name, monto, organizer);
-
     }
     public boolean StartTanda (Organizer organizer, int day, int month, int year){ //This method checks a date from the user and compares it to the system date. If the date is valid, an instance of
 //calendar named "cal" will store the user date.

@@ -107,6 +107,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>searchServlet</servlet-name>
+        <servlet-class>com.iteso.sweng.Servlets.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchServlet</servlet-name>
+        <url-pattern>/searchServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>RServlet</servlet-name>
         <servlet-class>com.iteso.sweng.Servlets.RServlet</servlet-class>
     </servlet>
@@ -169,6 +178,19 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DeleteProfileServlet</servlet-name>
+        <servlet-class>com.iteso.sweng.Profile.DeleteProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteProfileServlet</servlet-name>
+        <url-pattern>/DeleteProfileServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+    <servlet>
         <servlet-name>CancelEditProfileServlet</servlet-name>
         <servlet-class>com.iteso.sweng.Profile.CancelEditProfileServlet</servlet-class>
     </servlet>
@@ -185,6 +207,9 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
+
+
+
     <session-config>
         <session-timeout>
             30

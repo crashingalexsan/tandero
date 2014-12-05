@@ -25,10 +25,9 @@
 <form id="editprofile" action="RServlet" method="post" target="main">
     <input hidden="yes" name="value" value="Profile/editprofile.jsp">
 </form>
+
 <a href="#" target="main" onclick="document.getElementById('changepass').submit();">Change Password</a><br>
 <a href="#" target="main" onclick="document.getElementById('editprofile').submit();">Edit Profile</a><br>
-<a href="construction.jsp" target="main">Delete Account</a><br>
-
 
 <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("jquery.min.js") %>'></script>
 <script type='text/javascript' src='<%= org.webjars.AssetLocator.getWebJarPath("js/bootstrap.min.js") %>'></script>
